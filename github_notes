@@ -1,0 +1,6 @@
+# Notes
+
+# Convert DisconnectMe json list to list of domains
+
+cat DisconnectMe_entities.json | grep -A1 resources | grep -v resources | grep -v "-" | tr '"' ' ' | tr "," ' ' | tr ']' ' ' | tr '[' ' ' | awk '{$1=$1};1' | sort | uniq | while read line; do echo "0.0.0.0 $line"; done > disconnectme_domains.txt 
+
